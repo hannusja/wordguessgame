@@ -24,6 +24,7 @@ var dinosaursList = [alioramus, borogovia, euhelopus, hagryphus, iguanodon, irri
 
 var dinoGuess = dinosaursList[Math.floor(Math.random() * dinosaursList.length)]
 
+//I am leaving this console.log in code for now. Them dinonames are difficult to actually guess.
 console.log (dinoGuess)
 
 var Wins = 0
@@ -35,13 +36,9 @@ var guessdinoText = document.getElementById("guessdino")
 var usedletters = document.getElementById("usedletters")
 
 
-///All the above works how I want it. Don't mess with it unless absolutely have to!
+//!!!!make it restart!!!!
+//for (var i = 0; i<12; i++) {}
 
-
-//for (var i = 0; i<12; i++) {
-
-
-//below block is extremely sensitive. Don't breath on it!!!>
     document.onkeyup = function(event) {
         var letterGuess = event.key
         
@@ -50,10 +47,7 @@ var usedletters = document.getElementById("usedletters")
                 var a = dinoGuess.indexOf(letterGuess)
                 if (a !==-1) {
                     underscore[a] = letterGuess
-                    console.log (a)
-                    console.log (underscore)
-                    dinoGuess [a] = "*"
-                    console.log (dinoGuess)                  
+                    dinoGuess [a] = "*"                  
                 }
             }
         }
@@ -61,25 +55,23 @@ var usedletters = document.getElementById("usedletters")
         for (var k = 0; k<26; k++) {
             var b = letters.indexOf(letterGuess)
             if (b !==-1) {
-                console.log (letters[b])
                 usedletters.append(letters [b]) 
                 letters [b] = "." 
             }              
         } 
-        //TA: why below thing overcounting?
-            if (dinoGuess[0, 1, 2, 3, 4, 5, 6, 7, 8]==replacer[0, 1, 2, 3, 4, 5, 6, 7, 8]){
-            Wins++
-            }
 
-            for(var m = 0; m < letters.length; m++){
-                if(letters[m] == ".") {
-                guessnumber--
-                }
-            }
+        if (JSON.stringify(dinoGuess) === JSON.stringify(replacer)){
+            Wins++
+        }
+
+        //It'll still count down if you press same letter many times.
+        if (letters.indexOf (".") !== -1) {
+            guessnumber--
+        }
+
         guessdinoText.textContent = "Guess this Dino: " + underscore
         WinsText.textContent = "Wins: " + Wins
         guessText.textContent = "Number of guesses remaining: " + guessnumber
     }
 
-//above block is extremely sensitive. Don't breath on it!!!<
-//}
+   // restart if(guessnumber == 0) and (JSON.stringify(dinoGuess) === JSON.stringify(replacer))
