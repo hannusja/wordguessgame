@@ -1,5 +1,5 @@
 var alioramus = ["a", "l", "i", "o", "r", "a", "m", "u", "s"]
-var borogovia = ["b", "o", "r", "o"," g", "o"," v", "i", "a"]
+var borogovia = ["b", "o", "r", "o", "g", "o"," v", "i", "a"]
 var euhelopus = ["e", "u", "h", "e", "l", "o", "p", "u", "s"]
 var hagryphus = ["h", "a", "g", "r", "y", "p", "h", "u", "s"]
 var iguanodon = ["i", "g", "u", "a", "n", "o", "d", "o", "n"]
@@ -23,28 +23,19 @@ var dinoGuess = dinosaursList[Math.floor(Math.random() * dinosaursList.length)]
 console.log (dinoGuess)
     
 var Wins = document.getElementById("Wins")
-//var wins = document.createElement ("div")
-//wins.textContent = "Wins: " //+
-//Menu.appendChild(wins)
-//Wins.append(!) 
-
-
-
-//var usedletters = document.createElement ("div")
-//usedletters.textContent = "Letters already used: " 
-//Menu.appendChild(usedletters)
-
-
-//var guessremain = document.createElement ("div")
-//guessremain.textContent = "Number of guesses /remaining: "+ (12-i)
-//Menu.appendChild(guessremain)
 var usedletters = document.getElementById("usedletters")
 var guessremain = document.getElementById("guessremain")
 
+var guessnumber = 12
+guessremain.append(guessnumber)
+
+
+var score = 0
+Wins.append (score)
+
 //for (var i = 0; i<12; i++) {
-   
     document.onkeyup = function(event) {
-        var letterGuess = event.key
+     var letterGuess = event.key
         
         if (dinoGuess.indexOf(letterGuess) !== -1) {   
             for (var j = 0; j<9; j++) {
@@ -58,10 +49,7 @@ var guessremain = document.getElementById("guessremain")
                 }
             }
         }
-        else {
-       
-        }
-        
+
         for (var k = 0; k<26; k++) {
             var b = letters.indexOf(letterGuess)
             if (b !==-1) {
@@ -69,14 +57,32 @@ var guessremain = document.getElementById("guessremain")
                 usedletters.append(letters [b]) 
                 letters [b] = 0  
             }              
-        } 
-    
+        }
     }
-    var guessdino = document.getElementById("guessdino") 
-    guessdino.append(underscore)  
 //}
 
-guessremain.append(12-i) 
 
 
 
+
+
+//following not working
+//following line messes up if dinoguess
+var count = 0;
+for(var m = 0; m < letters.length; ++m){
+    if(letters[m] == 0)
+        count++;
+}
+console.log (count)
+guessnumber = 12 - count
+console.log (guessnumber)
+
+
+if (dinoGuess  === [0, 0, 0, 0, 0, 0, 0, 0, 0]) {
+score = score + 1 
+}
+console.log (score)
+console.log (underscore)
+console.log (dinoGuess)
+var guessdino = document.getElementById("guessdino") 
+guessdino.append(underscore)  
