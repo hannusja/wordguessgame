@@ -27,11 +27,7 @@ var Wins = document.getElementById("Wins")
 //Menu.appendChild(wins)
 //Wins.append(!) 
 
-var guessdino = document.getElementById("guessdino")
-//var guessdino = document.createElement ("div")
-//guessdino.textContent = "Guess this Dino: " //+
-//Menu.appendChild(guessdino)
-guessdino.append(underscore) 
+
 
 //var usedletters = document.createElement ("div")
 //usedletters.textContent = "Letters already used: " 
@@ -41,30 +37,44 @@ guessdino.append(underscore)
 //var guessremain = document.createElement ("div")
 //guessremain.textContent = "Number of guesses /remaining: "+ (12-i)
 //Menu.appendChild(guessremain)
+var usedletters = document.getElementById("usedletters")
+var guessremain = document.getElementById("guessremain")
 
-
-
-document.onkeyup = function(event) {
-    var letterGuess = event.key
-    console.log (letterGuess)
-    for (var i = 0; i<12; i++) {
-        var usedletters = document.getElementById("usedletters")
-        var guessremain = document.getElementById("guessremain")
+for (var i = 0; i<12; i++) {
+   
+    document.onkeyup = function(event) {
+        var letterGuess = event.key
+        console.log (letterGuess)
+        usedletters.append(letterGuess) 
         if (dinoGuess.indexOf(letterGuess) > -1) {
             //var usedletters = document.createElement ("div")
             // usedletters.textContent = "Letters already used: " +letterGuess
             // Menu.appendChild(usedletters)   
-        usedletters.append(letterGuess) 
+            var a = dinoGuess.indexOf(letterGuess)
+            underscore[a] = letterGuess
+            console.log (a)
+            console.log (underscore)
+            dinoGuess [a] = 0
+            console.log (dinoGuess)
         }
             //else if if (dinoGuess.indexOf(letterGuess) === -1)
         else {
                 //var guessremain = document.createElement ("div")
             //guessremain.textContent = "Number of guesses /remaining: "+ (12-i)
             //Menu.appendChild(guessremain)
-        guessremain.append(12-i)
-        }
+       
+        } 
+    
     }
+    
 }
+
+guessremain.append(12-i) 
+var guessdino = document.getElementById("guessdino")
+//var guessdino = document.createElement ("div")
+//guessdino.textContent = "Guess this Dino: " //+
+//Menu.appendChild(guessdino)
+guessdino.append(underscore)
 
 
 
