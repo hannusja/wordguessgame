@@ -23,9 +23,9 @@ var letters = ["a", "b", "c", "d", "e","f", "g", "h","i", "j", "k", "l","m", "n"
 var dinosaursList = [alioramus, borogovia, euhelopus, hagryphus, iguanodon, irritator, maiasaura, mononykus, noasaurus, othnielia, oviraptor, saichania, sinraptor, talarurus, unenlagia]
 
 var dinoGuess = dinosaursList[Math.floor(Math.random() * dinosaursList.length)]
-
-//I am leaving this console.log in code for now. Them dinonames are difficult to actually guess.
 console.log (dinoGuess)
+//I am leaving this console.log in code for now. Them dinonames are difficult to actually guess.
+
 
 var Wins = 0
 var guessnumber = 12  
@@ -36,14 +36,14 @@ var guessdinoText = document.getElementById("guessdino")
 var usedletters = document.getElementById("usedletters")
 
 
-//!!!!make it restart!!!!
-//for (var i = 0; i<12; i++) {}
 
-    document.onkeyup = function(event) {
-        var letterGuess = event.key
+//!!!!make it restart!!!!
+
+document.onkeyup = function(event) {
+    var letterGuess = event.key
         
-        if (dinoGuess.indexOf(letterGuess) !== -1) {   
-            for (var j = 0; j<9; j++) {
+    if (dinoGuess.indexOf(letterGuess) !== -1) {   
+        for (var j = 0; j<9; j++) {
                 var a = dinoGuess.indexOf(letterGuess)
                 if (a !==-1) {
                     underscore[a] = letterGuess
@@ -72,6 +72,10 @@ var usedletters = document.getElementById("usedletters")
         guessdinoText.textContent = "Guess this Dino: " + underscore
         WinsText.textContent = "Wins: " + Wins
         guessText.textContent = "Number of guesses remaining: " + guessnumber
-    }
 
-   // restart if(guessnumber == 0) and (JSON.stringify(dinoGuess) === JSON.stringify(replacer))
+        //The following didn't seem to restart anything
+        if (guessnumber === 0 || JSON.stringify(dinoGuess) === JSON.stringify(replacer))
+        return
+    }
+    
+   // restart if (guessnumber == 0 || JSON.stringify(dinoGuess) === JSON.stringify(replacer))
