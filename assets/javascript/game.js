@@ -14,6 +14,7 @@ var sinraptor = ["s", "i", "n", "r", "a", "p", "t", "o", "r"]
 var talarurus = ["t", "a", "l", "a", "r", "u", "r", "u", "s"]
 var unenlagia = ["u", "n", "e", "n", "l", "a", "g", "i", "a"]
 var underscore = ["_", "_", "_", "_", "_", "_", "_", "_", "_"]
+var letters = ["a", "b", "c", "d", "e","f", "g", "h","i", "j", "k", "l","m", "n", "o", "p", "q", "r","s", "t", "u", "v", "w", "x", "y", "z"]
 
 var dinosaursList = [alioramus, borogovia, euhelopus, hagryphus, iguanodon, irritator, maiasaura, mononykus, noasaurus, othnielia, oviraptor, saichania, sinraptor, talarurus, unenlagia]
 
@@ -40,59 +41,42 @@ var Wins = document.getElementById("Wins")
 var usedletters = document.getElementById("usedletters")
 var guessremain = document.getElementById("guessremain")
 
-for (var i = 0; i<12; i++) {
+//for (var i = 0; i<12; i++) {
    
     document.onkeyup = function(event) {
         var letterGuess = event.key
-        console.log (letterGuess)
-        usedletters.append(letterGuess) 
-        if (dinoGuess.indexOf(letterGuess) > -1) {
-            //var usedletters = document.createElement ("div")
-            // usedletters.textContent = "Letters already used: " +letterGuess
-            // Menu.appendChild(usedletters)   
-            var a = dinoGuess.indexOf(letterGuess)
-            underscore[a] = letterGuess
-            console.log (a)
-            console.log (underscore)
-            dinoGuess [a] = 0
-            console.log (dinoGuess)
+        
+        if (dinoGuess.indexOf(letterGuess) !== -1) {   
+            for (var j = 0; j<9; j++) {
+                var a = dinoGuess.indexOf(letterGuess)
+                if (a !==-1) {
+                    underscore[a] = letterGuess
+                    console.log (a)
+                    console.log (underscore)
+                    dinoGuess [a] = 0
+                    console.log (dinoGuess)                  
+                }
+            }
         }
-            //else if if (dinoGuess.indexOf(letterGuess) === -1)
         else {
-                //var guessremain = document.createElement ("div")
-            //guessremain.textContent = "Number of guesses /remaining: "+ (12-i)
-            //Menu.appendChild(guessremain)
        
+        }
+        
+        for (var k = 0; k<26; k++) {
+            var b = letters.indexOf(letterGuess)
+            if (b !==-1) {
+                console.log (letters[b])
+                usedletters.append(letters [b]) 
+                letters [b] = 0  
+            }              
         } 
     
     }
-    
-}
+    var guessdino = document.getElementById("guessdino") 
+    guessdino.append(underscore)  
+//}
 
 guessremain.append(12-i) 
-var guessdino = document.getElementById("guessdino")
-//var guessdino = document.createElement ("div")
-//guessdino.textContent = "Guess this Dino: " //+
-//Menu.appendChild(guessdino)
-guessdino.append(underscore)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-//if() {
-
-//}
-
-//else if () {
-
-//}
