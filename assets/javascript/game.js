@@ -1,5 +1,5 @@
 var alioramus = ["a", "l", "i", "o", "r", "a", "m", "u", "s"]
-var borogovia = ["b", "o", "r", "o", "g", "o"," v", "i", "a"]
+var borogovia = ["b", "o", "r", "o", "g", "o", "v", "i", "a"]
 var euhelopus = ["e", "u", "h", "e", "l", "o", "p", "u", "s"]
 var hagryphus = ["h", "a", "g", "r", "y", "p", "h", "u", "s"]
 var iguanodon = ["i", "g", "u", "a", "n", "o", "d", "o", "n"]
@@ -14,6 +14,7 @@ var sinraptor = ["s", "i", "n", "r", "a", "p", "t", "o", "r"]
 var talarurus = ["t", "a", "l", "a", "r", "u", "r", "u", "s"]
 var unenlagia = ["u", "n", "e", "n", "l", "a", "g", "i", "a"]
 var underscore = ["_", "_", "_", "_", "_", "_", "_", "_", "_"]
+var replacer = ["*", "*", "*", "*", "*", "*", "*", "*", "*"]
 
 //I feel it seems a bit of a cheating to use same lenght words, but folks in youtube example provided for homework did the same
 
@@ -24,20 +25,15 @@ var dinosaursList = [alioramus, borogovia, euhelopus, hagryphus, iguanodon, irri
 var dinoGuess = dinosaursList[Math.floor(Math.random() * dinosaursList.length)]
 
 console.log (dinoGuess)
-    
-var Wins = document.getElementById("Wins")
-var score = 0
-    Wins.append (score)
 
-var guessdino = document.getElementById("guessdino") 
-    guessdino.append(underscore)
+var Wins = 0
+var guessnumber = 12  
 
+var WinsText = document.getElementById("Wins")
+var guessText = document.getElementById("guessremain")
+var guessdinoText = document.getElementById("guessdino")
 var usedletters = document.getElementById("usedletters")
 
-
-var guessremain = document.getElementById("guessremain")
-var guessnumber = 12
-    guessremain.append(guessnumber)
 
 ///All the above works how I want it. Don't mess with it unless absolutely have to!
 
@@ -56,7 +52,7 @@ var guessnumber = 12
                     underscore[a] = letterGuess
                     console.log (a)
                     console.log (underscore)
-                    dinoGuess [a] = 0
+                    dinoGuess [a] = "*"
                     console.log (dinoGuess)                  
                 }
             }
@@ -67,35 +63,23 @@ var guessnumber = 12
             if (b !==-1) {
                 console.log (letters[b])
                 usedletters.append(letters [b]) 
-                letters [b] = 0  
+                letters [b] = "." 
             }              
         } 
+        //TA: why below thing overcounting?
+            if (dinoGuess[0, 1, 2, 3, 4, 5, 6, 7, 8]==replacer[0, 1, 2, 3, 4, 5, 6, 7, 8]){
+            Wins++
+            }
 
+            for(var m = 0; m < letters.length; m++){
+                if(letters[m] == ".") {
+                guessnumber--
+                }
+            }
+        guessdinoText.textContent = "Guess this Dino: " + underscore
+        WinsText.textContent = "Wins: " + Wins
+        guessText.textContent = "Number of guesses remaining: " + guessnumber
     }
 
 //above block is extremely sensitive. Don't breath on it!!!<
 //}
-
-
-
-
-
-
-//following not working at all. Can't figure out where to show it up
-
-
-// var count = 0;
-// for(var m = 0; m < letters.length; ++m){
-//     if(letters[m] == 0) {
-//     count++
-//     }
-// }
-// guessnumber = 12 - count
-
-
-
-
-// if (dinoGuess  == [0, 0, 0, 0, 0, 0, 0, 0, 0]) {
-//     score++
-// }
-
